@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Year Anniversary Mailbag</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <audio id="bg-music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="container">
+        <div class="envelope-wrapper">
+            <div class="envelope">
+                <div class="letter">
+                    <div class="text">
+                        <strong>Happy One Year Anniversary 🎉</strong>
+                        <p>
+                            သို့/ ကိုကို့ရဲ့ ဖင်တုံးကြီး🫣 <br>ဘာလိုလိုနဲ့ ရန်ဖြစ်လိုက်ပြန်ချစ်လိုက်နဲ့ တစ်နှစ်တောင်ပြည့်သွားရောပေါ့၊ 
+                            ကိုကိုက ကလေးလေးကို စကားတွေ အများကြီး မပြောတတ်ပေမဲ့ ကလေးလေးကို တကယ်ချစ်တာပါ💗။ 
+                            ကလေးလေးကတော့ကိုကို့ကို အားနေလိုက်အနိုင်ကျင့်နေတယ်ဆိုပေမဲ့ကိုကိုက မငြိုငြင်ရက်ပါဘူး😌၊ တစ်နှစ်ပြည့်ရင်ပြန်လာပြီး အတူတူတစ်နှစ်ပြည့်ပွဲလေးလုပ်ပေးမယ်လို ကတိပေးပြီး 
+                            ကတိမတိတဲ့အတွက်တောင်းပန်ပါတယ်ကိုကို၊ နောက်နှစ်ကြရင်တော့ကိုကိုသေချာပေါက် ကလေးလေးအနားမှာ အတူတူရှိနေပြီးတော့ ကလေးလေးလုပ်ချင်တာတွေ လိုက်လုပ်ပေးမယ်နော်။ 
+                            တစ်နှစ်ကြီးတောင် ခက်ခက်ခဲခဲ ကျော်ဖြတ်လာခဲ့ကြပြီးပြီဘဲ နောက် တစ်နှစ်ထပ်ပြီးတော့ အတူတူရှိနိုင်အောင်ကြိုးစားကြတာပေါ့ ကိုကိုတို့ အတူတူ💗။ အများအများအများ ကြီးချစ်တယ်နော်
+                             ကလေးလေး😚💗၊ မွမွမွမွမွ😚💗 <br>
+                             ခနခန အနိုင်အကျင့်ခံနေရပေမဲ့ တစ်စက်လေးမှအချစ်မပေါ့ခဲ့သောကိုကို😎
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="heart"></div>
+        </div>
+    </div>
+
+    <div class="buttons-container">
+        <button id="restart-btn" class="control-btn">Restart</button>
+        <button id="stop-btn" class="control-btn">Stop</button>
+        <button id="continue-btn" class="control-btn">Continue</button>
+    </div>
+
+    <script>
+        const envelope = document.querySelector('.envelope-wrapper');
+        const music = document.getElementById('bg-music');
+        const restartBtn = document.getElementById('restart-btn');
+        const stopBtn = document.getElementById('stop-btn');
+        const continueBtn = document.getElementById('continue-btn');
+
+        let isMusicPlaying = false;
+        let isMusicStopped = false; 
+
+        document.body.addEventListener('click', () => {
+            if (!isMusicPlaying && !isMusicStopped) {
+                music.play().catch(error => {
+                    console.log("Error occurred while playing music:", error);
+                });
+                isMusicPlaying = true;
+                isMusicStopped = false;
+            }
+        });
+
+        envelope.addEventListener('click', () => {
+            envelope.classList.toggle('flap');
+        });
+
+        restartBtn.addEventListener('click', () => {
+            music.currentTime = 0;  
+            music.play();  
+            isMusicPlaying = true;
+            isMusicStopped = false;
+        });
+
+        stopBtn.addEventListener('click', () => {
+            music.pause(); 
+            isMusicPlaying = false;  
+            isMusicStopped = true;  
+        });
+
+        continueBtn.addEventListener('click', () => {
+            if (isMusicStopped) {
+                music.play().catch(error => {
+                    console.log("Error occurred while continuing music:", error);
+                });
+                isMusicPlaying = true;
+                isMusicStopped = false; 
+            }
+        });
+    </script>
+</body>
+</html>
